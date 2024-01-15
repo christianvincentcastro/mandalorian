@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Mand'alor Bounty Hunters</title>
+        <!-- Favicon Option 1-->
+        <!--<link rel="icon" type="image/x-icon" href="./img/mandatranssmall2.png" /> -->
+
+		<!-- Favicon Option 2-->
+		<link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
+		<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png">
+		<link rel="manifest" href="assets/site.webmanifest">
+		<link rel="mask-icon" href="assets/safari-pinned-tab.svg" color="#5bbad5">
+		<meta name="msapplication-TileColor" content="#da532c">
+		<meta name="theme-color" content="#ffffff">
+
+        <!-- Core theme CSS (includes Bootstrap)-->
+		<link href="css/styles.css" rel="stylesheet" />
+		<link href="css/cc-customcss.css" rel="stylesheet" type="text/css">
+		
+		<style type="text/css">
+		*{margin:0; padding:0;}
+		body{
+			/*background-color: #F2F3FC;*/
+			/*background-image: url(img/mandatranssmall.png);*/
+			background-image: url("img/mandaback1.png");
+			background-size:100px;
+			background-position: center;
+			background-attachment: fixed; /*makes the background fixed and not scrolling with the page*/
+		}
+		</style>
+		
+    </head>
+		<style>
+			html
+		{
+			/* killing 300ms touch delay in IE */
+			-ms-touch-action: manipulation;
+			touch-action: manipulation;
+		}
+
+		/* IMAGE LIGHTBOX SELECTOR */
+
+		#imagelightbox
+		{
+			cursor: pointer;
+			position: fixed;
+			z-index: 10000;
+
+			-ms-touch-action: none;
+			touch-action: none;
+
+			-webkit-box-shadow: 0 0 3.125em rgba( 0, 0, 0, .75 ); /* 50 */
+			box-shadow: 0 0 3.125em rgba( 0, 0, 0, .75 ); /* 50 */
+		}
+
+
+		/* ACTIVITY INDICATION */
+
+		#imagelightbox-loading,
+		#imagelightbox-loading div
+		{
+			border-radius: 50%;
+		}
+		#imagelightbox-loading
+		{
+			width: 2.5em; /* 40 */
+			height: 2.5em; /* 40 */
+			background-color: #444;
+			background-color: rgba( 0, 0, 0, .5 );
+			position: fixed;
+			z-index: 10003;
+			top: 50%;
+			left: 50%;
+			padding: 0.625em; /* 10 */
+			margin: -1.25em 0 0 -1.25em; /* 20 */
+
+			-webkit-box-shadow: 0 0 2.5em rgba( 0, 0, 0, .75 ); /* 40 */
+			box-shadow: 0 0 2.5em rgba( 0, 0, 0, .75 ); /* 40 */
+		}
+			#imagelightbox-loading div
+			{
+				width: 1.25em; /* 20 */
+				height: 1.25em; /* 20 */
+				background-color: #fff;
+
+				-webkit-animation: imagelightbox-loading .5s ease infinite;
+				animation: imagelightbox-loading .5s ease infinite;
+			}
+
+			@-webkit-keyframes imagelightbox-loading
+			{
+				from { opacity: .5;	-webkit-transform: scale( .75 ); }
+				50%	 { opacity: 1;	-webkit-transform: scale( 1 ); }
+				to	 { opacity: .5;	-webkit-transform: scale( .75 ); }
+			}
+			@keyframes imagelightbox-loading
+			{
+				from { opacity: .5;	transform: scale( .75 ); }
+				50%	 { opacity: 1;	transform: scale( 1 ); }
+				to	 { opacity: .5;	transform: scale( .75 ); }
+			}
+
+
+		/* OVERLAY */
+
+		#imagelightbox-overlay
+		{
+			background-color: rgba( 102, 102, 102, .5 );
+			position: fixed;
+			z-index: 9998;
+			top: 0;
+			right: 0;
+			bottom: 0;
+			left: 0;
+	
+		}
+
+
+		/* "CLOSE" BUTTON */
+
+		#imagelightbox-close
+		{
+			width: 2.5em; /* 40 */
+			height: 2.5em; /* 40 */
+			text-align: left;
+			background-color: #666;
+			border-radius: 50%;
+			position: fixed;
+			z-index: 10002;
+			top: 2.5em; /* 40 */
+			right: 2.5em; /* 40 */
+
+			-webkit-transition: color .3s ease;
+			transition: color .3s ease;
+		}
+			#imagelightbox-close:hover,
+			#imagelightbox-close:focus
+			{
+				background-color: #111;
+			}
+			#imagelightbox-close:before,
+			#imagelightbox-close:after
+			{
+				width: 2px;
+				background-color: #fff;
+				content: '';
+				position: absolute;
+				top: 20%;
+				bottom: 20%;
+				left: 50%;
+				margin-left: -1px;
+			}
+			#imagelightbox-close:before
+			{
+				-webkit-transform: rotate( 45deg );
+				-ms-transform: rotate( 45deg );
+				transform: rotate( 45deg );
+			}
+			#imagelightbox-close:after
+			{
+				-webkit-transform: rotate( -45deg );
+				-ms-transform: rotate( -45deg );
+				transform: rotate( -45deg );
+			}
+
+
+		/* CAPTION */
+
+		#imagelightbox-caption
+		{
+			text-align: center;
+			color: #fff;
+			background-color: #666;
+			position: fixed;
+			z-index: 10001;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			padding: 0.625em; /* 10 */
+		}
+
+
+		/* NAVIGATION */
+
+		#imagelightbox-nav
+		{
+			background-color: #444;
+			background-color: rgba( 0, 0, 0, .5 );
+			border-radius: 20px;
+			position: fixed;
+			z-index: 10001;
+			left: 50%;
+			bottom: 3.75em; /* 60 */
+			padding: 0.313em; /* 5 */
+
+			-webkit-transform: translateX( -50% );
+			-ms-transform: translateX( -50% );
+			transform: translateX( -50% );
+		}
+			#imagelightbox-nav button
+			{
+				width: 1em; /* 20 */
+				height: 1em; /* 20 */
+				background-color: transparent;
+				border: 1px solid #fff;
+				border-radius: 50%;
+				display: inline-block;
+				margin: 0 0.313em; /* 5 */
+			}
+			#imagelightbox-nav button.active
+			{
+				background-color: #fff;
+			}
+
+
+		/* ARROWS */
+
+		.imagelightbox-arrow
+		{
+			width: 3.75em; /* 60 */
+			height: 7.5em; /* 120 */
+			background-color: #444;
+			background-color: rgba( 0, 0, 0, .5 );
+			vertical-align: middle;
+			display: none;
+			position: fixed;
+			z-index: 10001;
+			top: 50%;
+			margin-top: -3.75em; /* 60 */
+		}
+		.imagelightbox-arrow:hover,
+		.imagelightbox-arrow:focus
+		{
+			background-color: #666;
+			background-color: rgba( 0, 0, 0, .75 );
+		}
+		.imagelightbox-arrow:active
+		{
+			background-color: #111;
+		}
+			.imagelightbox-arrow-left
+			{
+				left: 2.5em; /* 40 */
+			}
+			.imagelightbox-arrow-right
+			{
+				right: 2.5em; /* 40 */
+			}
+			.imagelightbox-arrow:before
+			{
+				width: 0;
+				height: 0;
+				border: 1em solid transparent;
+				content: '';
+				display: inline-block;
+				margin-bottom: -0.125em; /* 2 */
+			}
+				.imagelightbox-arrow-left:before
+				{
+					border-left: none;
+					border-right-color: #fff;
+					margin-left: -0.313em; /* 5 */
+				}
+				.imagelightbox-arrow-right:before
+				{
+					border-right: none;
+					border-left-color: #fff;
+					margin-right: -0.313em; /* 5 */
+				}
+
+		#imagelightbox-loading,
+		#imagelightbox-overlay,
+		#imagelightbox-close,
+		#imagelightbox-caption,
+		#imagelightbox-nav,
+		.imagelightbox-arrow
+		{
+			-webkit-animation: fade-in .25s linear;
+			animation: fade-in .25s linear;
+		}
+			@-webkit-keyframes fade-in
+			{
+				from	{ opacity: 0; }
+				to		{ opacity: 1; }
+			}
+			@keyframes fade-in
+			{
+				from	{ opacity: 0; }
+				to		{ opacity: 1; }
+			}
+
+		@media only screen and (max-width: 41.250em) /* 660 */
+		{
+			#imagelightbox-close
+			{
+				top: 1.25em; /* 20 */
+				right: 1.25em; /* 20 */
+			}
+			#imagelightbox-nav
+			{
+				bottom: 1.25em; /* 20 */
+			}
+
+			.imagelightbox-arrow
+			{
+				width: 2.5em; /* 40 */
+				height: 3.75em; /* 60 */
+				margin-top: -2.75em; /* 30 */
+			}
+			.imagelightbox-arrow-left
+			{
+				left: 1.25em; /* 20 */
+			}
+			.imagelightbox-arrow-right
+			{
+				right: 1.25em; /* 20 */
+			}
+		}
+
+		@media only screen and (max-width: 20em) /* 320 */
+		{
+			.imagelightbox-arrow-left
+			{
+				left: 0;
+			}
+			.imagelightbox-arrow-right
+			{
+				right: 0;
+			}
+		}
+		</style>
+	
+    <body>
+		
+		<button type="button" class="btn btn-floating btn-lg yellowgold" id="btn-back-to-top" style="box-shadow:10px 10px 5px grey">
+		 	<i class="fas fa-arrow-up"></i>
+		</button>
+		
+        <!-- Responsive navbar-->
+        <nav class="navbar navbar-expand-lg navbar-dark">
+            <div class="container">
+                <a class="navbar-brand" href="./index.html"><img src="./img/mandacrest.png" alt="LOGO" width="50" height="72"/>Mand'alor Bounty Hunters </a>
+				
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                        <li class="nav-item"><a class="nav-link" aria-current="page" href="./index.html">Home</a></li>
+                      <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+                        <li class="nav-item dropdown active">
+                            <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Services</a>
+                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="./product1.html">Bounty Hunting</a></li>
+								<li><hr class="dropdown-divider" /></li>
+                                <li><a class="dropdown-item active" href="./product2.html">Mercenary Service</a></li>
+                                <li><hr class="dropdown-divider" /></li>
+                                <li><a class="dropdown-item disabled" href="#">Security Escort (Soon!)</a></li>
+                            </ul>
+                        </li>
+
+						<li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Want The Facts?</a>
+                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="./faqs1.html">WTF? 10 Essential Facts About Mandalorian Culture</a></li>
+								<li><hr class="dropdown-divider" /></li>
+                                <li><a class="dropdown-item" href="./faqs2.html">WTF? 10 Most Feared Bounty Hunters in the Galaxy</a></li>
+                            </ul>
+                        </li>
+
+
+						<li class="nav-item"><a class="nav-link" href="./contacts.html">Contact</a></li>
+						
+						<li class="nav-item"><a class="nav-link" aria-current="page" href="./warpzone.html">The Warpzone</a></li>
+
+                  </ul>
+                </div>
+            </div>
+        </nav>
+        <!-- Page content-->
+<div class="transitioncontrol">
+		<div class="container">
+			<h1 class="display-6"> Mercenary Service</h1>
+			<p> "So what's wrong with being a mercenary? Is your war worth fighting? If it is, then why does it matter who fights it for you? Aren't we imbued with the righteousness of your cause when we take up arms for you? Would you rather your own men and women died to make the point? And if your war is so noble, so necessary—why aren't you fighting it for yourself? Think of all that before you spit on us, aruetii." ―Jaster Mereel</p>
+			<p>Looking for a team of highly skilled and experienced mercenaries to tackle your toughest missions? Look no further than our agency. </p>
+			<p>Our team of elite mercenaries have the training and expertise to handle any situation, from covert operations to high-risk extractions. With years of experience in military, law enforcement, and private security, our mercenaries have the tactical skills, combat training, and strategic mindset to take on even the most challenging assignments.</p>
+			<p>Our agency offers a range of services, including security consulting, risk assessments, and customized mission planning. We pride ourselves on our professionalism, integrity, and commitment to getting the job done right.</p>
+			<p><a href="./contacts.html">Contact us </a>today to learn more about how our mercenary agency can help you achieve your objectives, no matter the challenge.</p>
+			<p>Click on the images...</p>
+		
+		</div>
+		
+		<!-- lightbox start -->
+		
+		<div class="container">
+	
+		<div class="row mb-4">
+				<div class="col-sm-4"> 
+					<a href="product2/1merc.jpg" data-imagelightbox="f">
+						<img src="product2/1merc.jpg" alt="The Crew" class="img-fluid rounded-4" style="box-shadow:10px 10px 5px grey">
+					</a> 
+					
+					<figcaption class="figure-caption"> The Crew </figcaption>
+					
+      			</div>
+				
+				<div class="col-sm-4"> 
+					<a href="product2/2merc.jpg" data-imagelightbox="f">
+						<img src="product2/2merc.jpg" alt="Space Station Mission" class="img-fluid rounded-4" style="box-shadow:10px 10px 5px grey">
+					</a> 
+					
+					<figcaption class="figure-caption"> Space Station Mission </figcaption>
+					
+      			</div>
+		
+				<div class="col-sm-4"> 
+					<a href="product2/3merc.jpg" data-imagelightbox="f">
+						<img src="product2/3merc.jpg" alt="On The Ground" class="img-fluid rounded-4" style="box-shadow:10px 10px 5px grey" >
+					</a> 
+					
+					<figcaption class="figure-caption"> On The Ground </figcaption>
+					
+      			</div>
+	</div>
+			
+	<div class="row mb-4">
+				<div class="col-sm-4"> 
+					<a href="product2/4merc.jpg" data-imagelightbox="f">
+						<img src="product2/4merc.jpg" alt="Shoot 'Em All" class="img-fluid rounded-4" style="box-shadow:10px 10px 5px grey" >
+					</a> 
+					
+					<figcaption class="figure-caption"> Shoot 'Em All </figcaption>
+					
+      			</div>
+				
+				<div class="col-sm-4"> 
+					<a href="product2/5merc.jpg" data-imagelightbox="f">
+						<img src="product2/5merc.jpg" alt="Air And Land Assets" class="img-fluid rounded-4" style="box-shadow:10px 10px 5px grey">
+					</a> 
+					
+					<figcaption class="figure-caption"> Air And Land Assets </figcaption>
+					
+      			</div>
+		
+				<div class="col-sm-4"> 
+					<a href="product2/6merc.jpg" data-imagelightbox="f">
+						<img src="product2/6merc.jpg" alt="Aerial Attack" class="img-fluid rounded-4" style="box-shadow:10px 10px 5px grey" >
+					</a> 
+					
+					<figcaption class="figure-caption"> Aerial Attack </figcaption>
+					
+      			</div>
+		</div>
+			
+		<!-- javascript lightbox start -->	
+			
+		<script src="js/jquery.js"></script>
+			<script src="js/imagelightbox.min.js"></script>
+			
+			<script>
+
+	$( function()
+	{
+			// ACTIVITY INDICATOR
+
+		var activityIndicatorOn = function()
+			{
+				$( '<div id="imagelightbox-loading"><div></div></div>' ).appendTo( 'body' );
+			},
+			activityIndicatorOff = function()
+			{
+				$( '#imagelightbox-loading' ).remove();
+			},
+
+
+			// OVERLAY
+
+			overlayOn = function()
+			{
+				$( '<div id="imagelightbox-overlay"></div>' ).appendTo( 'body' );
+			},
+			overlayOff = function()
+			{
+				$( '#imagelightbox-overlay' ).remove();
+			},
+
+
+			// CLOSE BUTTON
+
+			closeButtonOn = function( instance )
+			{
+				$( '<button type="button" id="imagelightbox-close" title="Close"></button>' ).appendTo( 'body' ).on( 'click touchend', function(){ $( this ).remove(); instance.quitImageLightbox(); return false; });
+			},
+			closeButtonOff = function()
+			{
+				$( '#imagelightbox-close' ).remove();
+			},
+
+
+			// CAPTION
+
+			captionOn = function()
+			{
+				var description = $( 'a[href="' + $( '#imagelightbox' ).attr( 'src' ) + '"] img' ).attr( 'alt' );
+				if( description.length > 0 )
+					$( '<div id="imagelightbox-caption">' + description + '</div>' ).appendTo( 'body' );
+			},
+			captionOff = function()
+			{
+				$( '#imagelightbox-caption' ).remove();
+			},
+
+
+			// NAVIGATION
+
+			navigationOn = function( instance, selector )
+			{
+				var images = $( selector );
+				if( images.length )
+				{
+					var nav = $( '<div id="imagelightbox-nav"></div>' );
+					for( var i = 0; i < images.length; i++ )
+						nav.append( '<button type="button"></button>' );
+
+					nav.appendTo( 'body' );
+					nav.on( 'click touchend', function(){ return false; });
+
+					var navItems = nav.find( 'button' );
+					navItems.on( 'click touchend', function()
+					{
+						var $this = $( this );
+						if( images.eq( $this.index() ).attr( 'href' ) != $( '#imagelightbox' ).attr( 'src' ) )
+							instance.switchImageLightbox( $this.index() );
+
+						navItems.removeClass( 'active' );
+						navItems.eq( $this.index() ).addClass( 'active' );
+
+						return false;
+					})
+					.on( 'touchend', function(){ return false; });
+				}
+			},
+			navigationUpdate = function( selector )
+			{
+				var items = $( '#imagelightbox-nav button' );
+				items.removeClass( 'active' );
+				items.eq( $( selector ).filter( '[href="' + $( '#imagelightbox' ).attr( 'src' ) + '"]' ).index( selector ) ).addClass( 'active' );
+			},
+			navigationOff = function()
+			{
+				$( '#imagelightbox-nav' ).remove();
+			},
+
+
+			// ARROWS
+
+			arrowsOn = function( instance, selector )
+			{
+				var $arrows = $( '<button type="button" class="imagelightbox-arrow imagelightbox-arrow-left"></button><button type="button" class="imagelightbox-arrow imagelightbox-arrow-right"></button>' );
+
+				$arrows.appendTo( 'body' );
+
+				$arrows.on( 'click touchend', function( e )
+				{
+					e.preventDefault();
+
+					var $this	= $( this ),
+						$target	= $( selector + '[href="' + $( '#imagelightbox' ).attr( 'src' ) + '"]' ),
+						index	= $target.index( selector );
+
+					if( $this.hasClass( 'imagelightbox-arrow-left' ) )
+					{
+						index = index - 1;
+						if( !$( selector ).eq( index ).length )
+							index = $( selector ).length;
+					}
+					else
+					{
+						index = index + 1;
+						if( !$( selector ).eq( index ).length )
+							index = 0;
+					}
+
+					instance.switchImageLightbox( index );
+					return false;
+				});
+			},
+			arrowsOff = function()
+			{
+				$( '.imagelightbox-arrow' ).remove();
+			};
+
+
+		//	WITH ACTIVITY INDICATION
+
+		$( 'a[data-imagelightbox="a"]' ).imageLightbox(
+		{
+			onLoadStart:	function() { activityIndicatorOn(); },
+			onLoadEnd:		function() { activityIndicatorOff(); },
+			onEnd:	 		function() { activityIndicatorOff(); }
+		});
+
+
+		//	WITH OVERLAY & ACTIVITY INDICATION
+
+		$( 'a[data-imagelightbox="b"]' ).imageLightbox(
+		{
+			onStart: 	 function() { overlayOn(); },
+			onEnd:	 	 function() { overlayOff(); activityIndicatorOff(); },
+			onLoadStart: function() { activityIndicatorOn(); },
+			onLoadEnd:	 function() { activityIndicatorOff(); }
+		});
+
+
+		//	WITH "CLOSE" BUTTON & ACTIVITY INDICATION
+
+		var instanceC = $( 'a[data-imagelightbox="c"]' ).imageLightbox(
+		{
+			quitOnDocClick:	false,
+			onStart:		function() { closeButtonOn( instanceC ); },
+			onEnd:			function() { closeButtonOff(); activityIndicatorOff(); },
+			onLoadStart: 	function() { activityIndicatorOn(); },
+			onLoadEnd:	 	function() { activityIndicatorOff(); }
+		});
+
+
+		//	WITH CAPTION & ACTIVITY INDICATION
+
+		$( 'a[data-imagelightbox="d"]' ).imageLightbox(
+		{
+			onLoadStart: function() { captionOff(); activityIndicatorOn(); },
+			onLoadEnd:	 function() { captionOn(); activityIndicatorOff(); },
+			onEnd:		 function() { captionOff(); activityIndicatorOff(); }
+		});
+
+
+		//	WITH ARROWS & ACTIVITY INDICATION
+
+		var selectorG = 'a[data-imagelightbox="g"]';
+		var instanceG = $( selectorG ).imageLightbox(
+		{
+			onStart:		function(){ arrowsOn( instanceG, selectorG ); },
+			onEnd:			function(){ arrowsOff(); activityIndicatorOff(); },
+			onLoadStart: 	function(){ activityIndicatorOn(); },
+			onLoadEnd:	 	function(){ $( '.imagelightbox-arrow' ).css( 'display', 'block' ); activityIndicatorOff(); }
+		});
+
+
+		//	WITH NAVIGATION & ACTIVITY INDICATION
+
+		var selectorE = 'a[data-imagelightbox="e"]';
+		var instanceE = $( selectorE ).imageLightbox(
+		{
+			onStart:	 function() { navigationOn( instanceE, selectorE ); },
+			onEnd:		 function() { navigationOff(); activityIndicatorOff(); },
+			onLoadStart: function() { activityIndicatorOn(); },
+			onLoadEnd:	 function() { navigationUpdate( selectorE ); activityIndicatorOff(); }
+		});
+
+
+		//	ALL COMBINED
+
+		var selectorF = 'a[data-imagelightbox="f"]';
+		var instanceF = $( selectorF ).imageLightbox(
+		{
+			onStart:		function() { overlayOn(); closeButtonOn( instanceF ); arrowsOn( instanceF, selectorF ); },
+			onEnd:			function() { overlayOff(); captionOff(); closeButtonOff(); arrowsOff(); activityIndicatorOff(); },
+			onLoadStart: 	function() { captionOff(); activityIndicatorOn(); },
+			onLoadEnd:	 	function() { captionOn(); activityIndicatorOff(); $( '.imagelightbox-arrow' ).css( 'display', 'block' ); }
+		});
+
+	});
+</script>
+
+		<!-- javascript lightbox end -->
+			
+</div>
+		
+		<!-- lightbox end -->
+</div>
+			<footer class="text-bg-primary mt-4">
+			<div class="container py-5">
+				<div class="row">
+					<div class="col-sm-6 text-center text-md-start">
+					<nav>
+						<ul class="list-inline">
+							<li class="list-inline-item"><a href="./about.html">About</a></li>
+							<li class="list-inline-item"><a href="./contacts.html">Contact</a></li>
+						</ul>
+					</nav>
+					</div>
+					
+					<div class="col-sm-6 text-center text-md-end">
+						<ul class="list-inline">
+							<li class="list-inline-item"><a href="https://www.facebook.com/themandaloriannet/" target="_blank"><i class="fab fa-facebook-square fa-2x"></i></a></li>
+							<li class="list-inline-item"><a href="https://www.youtube.com/@StarWars" target="_blank"><i class="fab fa-youtube-square fa-2x"></i></a></li>
+							<li class="list-inline-item"><a href="https://www.instagram.com/themandalorian/?hl=en" target="_blank"><i class="fab fa-instagram-square fa-2x"></i></a></li>
+						</ul>
+					</div>	
+				</div>
+				<p class="text-center text-md-start">&copy;2023. Mand'alor Bounty Hunters. All rights reserved. <br>By Christian Vincent Castro</p>
+			</div>
+		</footer>
+		
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="js/scripts.js"></script>
+		
+		<!-- back top top button JS -->
+		<script src="js/backtotop.js"></script>
+		
+    </body>
+</html>

@@ -1,0 +1,397 @@
+@charset "utf-8";
+@import url("../fontawesome-free-5.15.1-web-20230812T071852Z-001/fontawesome-free-5.15.1-web/css/all.min.css");
+/* CSS Document */
+/*footer-nav {background-color: #C39275;}*/
+
+/*homebase button*/
+.homebase{
+	width:60px;
+	height: 80px;
+	background-color: silver;
+	margin: 0 auto;
+	border: 3px solid #A86F26;
+	border-radius: 5px;
+	
+}
+
+/*--3d rotating carousel START CSS*/
+
+.rotatingimages {
+	width:320px;
+	height:200px;
+	position:absolute;
+	border: 5px solid #A86F26;
+}
+
+.rotatingimages2 {
+	width:150px;
+	height:200px;
+	position:absolute;
+	border: 5px solid #A86F26;
+}
+
+.rotatingcarousel {
+	width:320px;
+	height:200px;
+	position: relative;
+	margin-top:15%;
+	margin-left:40%;
+	perspective:1000px;
+	transform-style:preserve-3d;
+	transform: rotateX(0g) rotateZ(-20deg);
+	animation: ror 20s linear infinite;
+}
+
+@keyframes ror{
+	50%{
+		transform: rotateX(30deg);	
+	}
+	80%{
+		transform: rotateY(-30deg)
+	}
+}
+
+.rotatingimagescontainer {
+	width: 100%;
+	position: absolute;
+	transform-style:preserve-3d;
+	animation: rotate 20s linear infinite;
+}
+
+@keyframes rotate{
+	from{
+			
+	}
+	to{
+		transform: rotateY(360deg);
+	}
+}
+
+.rotatingimages:nth-child(1){
+	transform: rotateY(60deg) translateZ(300px);
+}
+.rotatingimages:nth-child(2){
+	transform: rotateY(120deg) translateZ(300px);
+}
+.rotatingimages:nth-child(3){
+	transform: rotateY(180deg) translateZ(300px);
+}
+.rotatingimages:nth-child(4){
+	transform: rotateY(240deg) translateZ(300px);
+}
+.rotatingimages:nth-child(5){
+	transform: rotateY(300deg) translateZ(300px);
+}
+.rotatingimages:nth-child(6){
+	transform: rotateY(360deg) translateZ(300px);
+}
+
+.rotatingimages2:nth-child(1){
+	transform: rotateY(60deg) translateZ(300px);
+}
+.rotatingimages2:nth-child(2){
+	transform: rotateY(120deg) translateZ(300px);
+}
+.rotatingimages2:nth-child(3){
+	transform: rotateY(180deg) translateZ(300px);
+}
+.rotatingimages2:nth-child(4){
+	transform: rotateY(240deg) translateZ(300px);
+}
+.rotatingimages2:nth-child(5){
+	transform: rotateY(300deg) translateZ(300px);
+}
+.rotatingimages2:nth-child(6){
+	transform: rotateY(360deg) translateZ(300px);
+}
+
+.rotatingimages:hover{
+	width:360px;
+	height:240px;
+	cursor: pointer;
+}
+.rotatingimages2:hover{
+	width:170px;
+	height:220px;
+	cursor: pointer;
+}
+
+/*--3d rotating carousel END CSS*/
+
+.transitioncontrol {
+	animation: transitionIn 1s;
+}
+
+@keyframes transitionIn {
+	from{
+		opacity: 0;
+		transform: rotateZ(-360deg);
+		/*transform: translateZ(-100px);*/
+	}
+	
+	to{
+		opacity: 1;
+		transform: rotateZ(0);
+		/*transform: translateZ(0)*/
+	}
+}
+
+h1, h5{
+	text-shadow:10px 10px 7px grey;
+}
+
+.img-center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+
+#btn-back-to-top{
+	/*postion:fixed;
+	bottom: 50px;
+	right: 20px;
+    display: none;
+	opacity: 0.8;
+	z-index: 10000;*/
+	display: none;
+	opacity: 0.5;
+ 	position: fixed;
+  	bottom: 20px;
+  	right: 30px;
+  	z-index: 99;
+  	font-size: 18px;
+  	border: none;
+  	outline: none;
+  	background-color: #B5734B;
+  	color: white;
+  	cursor: pointer;
+  	padding: 15px;
+  	border-radius: 4px;
+}
+
+/* Colors */
+/**{text-shadow: 2px 2px 2px grey;}*/
+.yellowgold {background-color: #C39275}
+.text-bg-primary {background-color: #C39275!important; color:#fff!important}
+
+.btn-primary{
+  background-color:#B5734B;
+  color:#fff;
+  border:none;
+}
+
+.btn-primary:hover{
+  background-color:#BC9A59;
+  color:#fff;
+  border:none;
+}
+/* Navbar Overwrite */
+.navbar {
+  background-color: #C39275;
+}
+.navbar .navbar-brand {
+  color: 	#140404;
+}
+.navbar .navbar-brand:hover,
+.navbar .navbar-brand:focus {
+  color: #fdfcff;
+}
+.navbar .navbar-text {
+  color: #140404;
+}
+.navbar .navbar-text a {
+  color: #fdfcff;
+}
+.navbar .navbar-text a:hover,
+.navbar .navbar-text a:focus {
+  color: #fdfcff; 
+}
+.navbar .navbar-nav .nav-link {
+  color: #140404;
+  border-radius: .25rem;
+  margin: 0 0.25em;
+}
+.navbar .navbar-nav .nav-link:not(.disabled):hover,
+.navbar .navbar-nav .nav-link:not(.disabled):focus {
+  color: #fdfcff;
+}
+.navbar .navbar-nav .dropdown-menu {
+  background-color: #C39275;
+  border-color: #BC9A59;
+}
+.navbar .navbar-nav .dropdown-menu .dropdown-item {
+  color: #140404;
+}
+.navbar .navbar-nav .dropdown-menu .dropdown-item:hover,
+.navbar .navbar-nav .dropdown-menu .dropdown-item:focus,
+.navbar .navbar-nav .dropdown-menu .dropdown-item.active {
+  color: #fdfcff;
+  background-color: #BC9A59;
+}
+.navbar .navbar-nav .dropdown-menu .dropdown-divider {
+  border-top-color: #BC9A59;
+}
+.navbar .navbar-nav .nav-item.active .nav-link,
+.navbar .navbar-nav .nav-item.active .nav-link:hover,
+.navbar .navbar-nav .nav-item.active .nav-link:focus,
+.navbar .navbar-nav .nav-item.show .nav-link,
+.navbar .navbar-nav .nav-item.show .nav-link:hover,
+.navbar .navbar-nav .nav-item.show .nav-link:focus {
+  color: #fdfcff;
+  background-color: #BC9A59;
+}
+.navbar .navbar-toggler {
+  border-color: #BC9A59;
+}
+.navbar .navbar-toggler:hover,
+.navbar .navbar-toggler:focus {
+  background-color: #BC9A59;
+}
+.navbar .navbar-toggler .navbar-toggler-icon {
+  color: #140404;
+}
+.navbar .navbar-collapse,
+.navbar .navbar-form {
+  border-color: #140404;
+}
+.navbar .navbar-link {
+  color: #140404;
+}
+.navbar .navbar-link:hover {
+  color: #fdfcff;
+}
+
+
+@media (max-width: 575px) {
+  .navbar-expand-sm .navbar-nav .show .dropdown-menu .dropdown-item {
+    color: #140404;
+  }
+  .navbar-expand-sm .navbar-nav .show .dropdown-menu .dropdown-item:hover,
+  .navbar-expand-sm .navbar-nav .show .dropdown-menu .dropdown-item:focus {
+    color: #fdfcff;
+  }
+  .navbar-expand-sm .navbar-nav .show .dropdown-menu .dropdown-item.active {
+    color: #fdfcff;
+    background-color: #BC9A59;
+  }
+  .card {
+		width:100%;
+		height: 100%;
+	}
+	.rotatingimagescontainer{
+		/*display: none;*/
+		width:30%;
+		height: 30%;
+	}
+}
+
+@media (max-width: 767px) {
+  .navbar-expand-md .navbar-nav .show .dropdown-menu .dropdown-item {
+    color: #140404;
+  }
+  .navbar-expand-md .navbar-nav .show .dropdown-menu .dropdown-item:hover,
+  .navbar-expand-md .navbar-nav .show .dropdown-menu .dropdown-item:focus {
+    color: #fdfcff;
+  }
+  .navbar-expand-md .navbar-nav .show .dropdown-menu .dropdown-item.active {
+    color: #fdfcff;
+    background-color: #BC9A59;
+  }
+  .card {
+		width:100%;
+		height: 100%;
+	}
+	.rotatingimagescontainer{
+		/*display: none;*/
+		width:50%;
+		height: 50%;
+	}
+}
+@media (max-width: 991px) {
+  .navbar-expand-lg .navbar-nav .show .dropdown-menu .dropdown-item {
+    color: #140404;
+  }
+  .navbar-expand-lg .navbar-nav .show .dropdown-menu .dropdown-item:hover,
+  .navbar-expand-lg .navbar-nav .show .dropdown-menu .dropdown-item:focus {
+    color: #fdfcff;
+  }
+  .navbar-expand-lg .navbar-nav .show .dropdown-menu .dropdown-item.active {
+    color: #fdfcff;
+    background-color: #BC9A59;
+  }
+  .card {
+		width:100%;
+		height: 100%;
+	}
+	.rotatingimagescontainer{
+		/*display: none;*/
+		width:100%;
+		height: 100%;
+	}
+}
+
+@media (max-width: 1199px) {
+  .navbar-expand-xl .navbar-nav .show .dropdown-menu .dropdown-item {
+    color: #140404;
+  }
+  .navbar-expand-xl .navbar-nav .show .dropdown-menu .dropdown-item:hover,
+  .navbar-expand-xl .navbar-nav .show .dropdown-menu .dropdown-item:focus {
+    color: #fdfcff;
+  }
+  .navbar-expand-xl .navbar-nav .show .dropdown-menu .dropdown-item.active {
+    color: #fdfcff;
+    background-color: #BC9A59;
+  }
+	.card {
+		width:100%;
+		height: 100%;
+	}
+	.rotatingimagescontainer{
+		/*display: none;*/
+		width:100%;
+		height: 100%;
+	}
+	
+}
+	
+
+@media (max-width: 2000px){
+	.card {
+		width:100%;
+		height: 100%;
+	}
+	.rotatingimagescontainer{
+		/*display: none;*/
+		width:100%;
+		height: 100%;
+	}
+	
+}
+
+@media (max-width: 3000px){
+	.card {
+		width:100%;
+		height: 100%;
+	}
+	.rotatingimagescontainer{
+		/*display: none;*/
+		width:100%;
+		height: 100%;
+	}
+	
+}
+
+
+/*.navbar-expand .navbar-nav .show .dropdown-menu .dropdown-item {
+  color: #140404;
+}
+.navbar-expand .navbar-nav .show .dropdown-menu .dropdown-item:hover,
+.navbar-expand .navbar-nav .show .dropdown-menu .dropdown-item:focus {
+  color: #fdfcff;
+}
+.navbar-expand .navbar-nav .show .dropdown-menu .dropdown-item.active {
+  color: #fdfcff;
+  background-color: #BC9A59;
+}*/
+	
